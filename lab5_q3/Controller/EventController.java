@@ -46,12 +46,13 @@ public class EventController {
     }
 
 
-    @PutMapping("/change/{Cap}")
-    public ApiResponse changeCap(@PathVariable int Cap){
+    @PutMapping("/change/{index}/{Cap}")
+    public ApiResponse changeCap(@PathVariable String index ,@PathVariable int Cap){
 
         for (Event event : events){
+            if (event.getID().contains(index)){
             event.setCapacity(Cap);
-        }
+        }}
 
         return new ApiResponse("Changed");
     }
